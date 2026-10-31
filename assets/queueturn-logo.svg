@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00d9e8"/><stop offset=".28" stop-color="#075bff"/><stop offset=".55" stop-color="#b900ff"/><stop offset=".78" stop-color="#ff4c24"/><stop offset="1" stop-color="#ffe600"/></linearGradient>
+ <radialGradient id="core"><stop stop-color="#063eea"/><stop offset="1" stop-color="#000b69"/></radialGradient>
+ <linearGradient id="blue" x2="1" y2="1"><stop stop-color="#56efff"/><stop offset="1" stop-color="#0066ff"/></linearGradient>
+ <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#fff02b"/><stop offset="1" stop-color="#ff6500"/></linearGradient>
+ <linearGradient id="green" x2="1" y2="1"><stop stop-color="#38ffb2"/><stop offset="1" stop-color="#00a78a"/></linearGradient>
+ <linearGradient id="ring" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".55" stop-color="#e9f4ff"/><stop offset="1" stop-color="#ffdc86"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<rect x="18" y="18" width="476" height="476" rx="104" fill="url(#bg)"/>
+<circle cx="256" cy="258" r="178" fill="#050b79" opacity=".5"/>
+<circle cx="256" cy="256" r="135" fill="url(#core)"/>
+<g>
+ <circle cx="206" cy="198" r="34" fill="url(#blue)"/><path d="M150 283c0-29 23-52 52-52h17c29 0 52 23 52 52v43H150z" fill="url(#blue)"/>
+ <circle cx="274" cy="185" r="25" fill="url(#gold)"/><path d="M236 244c7-16 22-25 40-25h6c25 0 44 20 44 44v63h-60v-48c0-15-10-27-30-34z" fill="url(#gold)"/>
+ <circle cx="334" cy="172" r="21" fill="url(#green)"/><path d="M315 222c0-18 14-32 32-32h3c18 0 32 14 32 32v53c0 12-9 21-21 21h-25c-12 0-21-9-21-21z" fill="url(#green)"/>
+</g>
+<path d="M260 91c-91 0-165 74-165 165s74 165 165 165c47 0 90-20 120-51" fill="none" stroke="#06108c" stroke-width="60" stroke-linecap="round" opacity=".35" filter="url(#shadow)" transform="translate(5 8)"/>
+<path d="M256 78c-98 0-178 80-178 178s80 178 178 178c57 0 108-27 141-69" fill="none" stroke="url(#ring)" stroke-width="52" stroke-linecap="round"/>
+<path d="M367 332h89c13 0 20 15 11 25l-67 74c-10 11-28 4-28-11v-27" fill="url(#ring)"/>
+</svg>
