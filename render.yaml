@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: nndigitals-social-mcp
+    runtime: node
+    plan: starter
+    rootDir: social-mcp/server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SOCIAL_MCP_TOKEN
+        generateValue: true
+      - key: SOCIAL_BRIDGE_TOKEN
+        generateValue: true
