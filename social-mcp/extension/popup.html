@@ -1,0 +1,13 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+body{font:13px system-ui,sans-serif;width:330px;margin:0;padding:14px;color:#1a1a1a}h1{font-size:15px;margin:0 0 4px}.sub,.hint{color:#666}.sub{margin-bottom:12px}.row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #eee}.dot{width:9px;height:9px;border-radius:50%;background:#c33;flex:none}.dot.on{background:#269b4b}.name{flex:1}button{font:inherit;padding:5px 10px;border:1px solid #bbb;border-radius:6px;background:#fff;cursor:pointer}button:disabled{opacity:.5}label{display:block;margin:8px 0 3px;color:#444}input[type=text],input[type=password]{width:100%;box-sizing:border-box;padding:6px 7px;border:1px solid #bbb;border-radius:6px;font:inherit}.chk{display:flex;gap:6px;align-items:flex-start;margin-top:10px}.hint{font-size:11px}#bridge{margin-bottom:8px}.sec{margin-top:14px}
+</style></head><body>
+<h1>N&N Digitals Social MCP</h1><div class="sub">Connect your own social accounts through Chrome.</div>
+<div id="bridge"></div><div id="rows"></div>
+<div class="sec">
+<label>Backend URL</label><input id="serverUrl" type="text" placeholder="https://api.nndigitals.com">
+<label>MCP access token</label><input id="mcpToken" type="password" placeholder="Render SOCIAL_MCP_TOKEN">
+<label>Browser bridge token</label><input id="bridgeToken" type="password" placeholder="Render SOCIAL_BRIDGE_TOKEN">
+<div class="chk"><input type="checkbox" id="auto"><div><div>Allow AI to submit posts</div><div class="hint">Off by default. When off, AI only prepares the post for your review.</div></div></div>
+<div style="margin-top:10px"><button id="save">Save settings</button> <span id="saved" class="hint"></span></div>
+</div><script src="popup.js"></script></body></html>
