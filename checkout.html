@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10131b">
+  <meta name="robots" content="noindex,nofollow">
+  <title>TabSnap Checkout | N&N Digitals</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,rgba(104,124,255,.2),transparent 45%),#0d1017;color:#f4f6fb;font:16px/1.6 Inter,system-ui,sans-serif;display:grid;place-items:center;padding:24px}.panel{width:min(520px,100%);padding:38px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(20,25,37,.92);text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.3)}.brand{font-weight:800;letter-spacing:-.03em;color:#c6ceff}.mark{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:9px;border-radius:11px;background:linear-gradient(135deg,#8295ff,#63dfc0);color:#101522}.product{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#91a0b8;margin-top:34px}h1{font-size:34px;letter-spacing:-.05em;margin:8px 0}.muted{color:#a7b1c2}.spinner{width:28px;height:28px;border:3px solid rgba(255,255,255,.18);border-top-color:#91a0ff;border-radius:50%;margin:25px auto;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.error{color:#ffb4b4;display:none}.foot{font-size:12px;color:#7e899c;margin-top:30px}a{color:#c3ccff}
+  </style>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+</head>
+<body>
+  <main class="panel">
+    <div class="brand"><span class="mark">N&amp;N</span>N&amp;N Digitals</div>
+    <div class="product">Secure product checkout</div>
+    <h1>TabSnap</h1>
+    <p class="muted">Complete your TabSnap purchase securely through Paddle.</p>
+    <div class="spinner" id="spinner"></div>
+    <p class="muted" id="status">Preparing your secure checkout…</p>
+    <p class="error" id="error">We couldn't open checkout. Please return to TabSnap and try again.</p>
+    <div class="foot">Payments securely processed by Paddle · N&amp;N Digitals</div>
+  </main>
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const transactionId = params.get("_ptxn");
+      const status = document.getElementById("status");
+      const spinner = document.getElementById("spinner");
+      const error = document.getElementById("error");
+      if (!transactionId || !/^txn_[a-z0-9]+$/i.test(transactionId)) {
+        spinner.style.display = "none";
+        status.textContent = "This checkout link is incomplete. Return to TabSnap and start checkout again.";
+        return;
+      }
+      if (!window.Paddle) {
+        spinner.style.display = "none";
+        status.style.display = "none";
+        error.style.display = "block";
+        return;
+      }
+      try {
+        Paddle.Initialize({ token: "live_60986c6d841dedbd291fc4b0904" });
+        status.textContent = "Opening Paddle’s secure payment window…";
+        Paddle.Checkout.open({
+          transactionId,
+          settings: {
+            displayMode: "overlay",
+            variant: "one-page",
+            successUrl: "https://nndigitals.com/checkout-success.html"
+          }
+        });
+        setTimeout(() => {
+          spinner.style.display = "none";
+          status.textContent = "If the payment window did not appear, check whether your browser blocked the popup.";
+        }, 2500);
+      } catch (e) {
+        spinner.style.display = "none";
+        status.style.display = "none";
+        error.style.display = "block";
+      }
+    })();
+  </script>
+</body>
+</html>
