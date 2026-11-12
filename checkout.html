@@ -41,13 +41,25 @@
         return;
       }
       try {
-        Paddle.Initialize({ token: "live_60986c6d841dedbd291fc4b0904" });
-        status.textContent = "Opening Paddle’s secure payment window…";
+        Paddle.Initialize({
+          token: "live_60986c6d841dedbd291fc4b0904",
+          checkout: {
+            settings: {
+              displayMode: "overlay",
+              variant: "one-page",
+              theme: "light",
+              locale: "en"
+            }
+          }
+        });
+        status.textContent = "Opening Paddle’s secure one-page checkout…";
         Paddle.Checkout.open({
           transactionId,
           settings: {
             displayMode: "overlay",
             variant: "one-page",
+            theme: "light",
+            locale: "en",
             successUrl: "https://nndigitals.com/checkout-success.html"
           }
         });
