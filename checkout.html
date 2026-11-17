@@ -24,22 +24,17 @@
   </main>
   <script>
     (() => {
-      const params = new URLSearchParams(location.search);
-      const transactionId = params.get("_ptxn");
       const status = document.getElementById("status");
       const spinner = document.getElementById("spinner");
       const error = document.getElementById("error");
-      if (!transactionId || !/^txn_[a-z0-9]+$/i.test(transactionId)) {
-        spinner.style.display = "none";
-        status.textContent = "This checkout link is incomplete. Return to the product page and start checkout again.";
-        return;
-      }
+
       if (!window.Paddle) {
         spinner.style.display = "none";
         status.style.display = "none";
         error.style.display = "block";
         return;
       }
+
       try {
         Paddle.Initialize({
           token: "live_60986c6d841dedbd291fc4b0904",
@@ -52,9 +47,10 @@
             }
           }
         });
+
         status.textContent = "Opening Paddle’s secure one-page checkout…";
         Paddle.Checkout.open({
-          transactionId,
+          items: [{ priceId: "pri_01m7mr12xc8rf7e26tjj5yrvyd", quantity: 1 }],
           settings: {
             displayMode: "overlay",
             variant: "one-page",
@@ -63,6 +59,7 @@
             successUrl: "https://nndigitals.com/checkout-success.html"
           }
         });
+
         setTimeout(() => {
           spinner.style.display = "none";
           status.textContent = "If the payment window did not appear, check whether your browser blocked the popup.";
